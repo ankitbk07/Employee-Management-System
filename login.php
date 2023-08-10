@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $password = trim($_POST['password']);
     }
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, username, password, snake_score FROM users WHERE username = ?";
+        $sql = "SELECT id, username, password FROM users WHERE username = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "s", $param_username);
         $param_username = $username;
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(mysqli_stmt_execute($stmt)){
             mysqli_stmt_store_result($stmt);
          if(mysqli_stmt_num_rows($stmt) == 1){
-            mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $snake_score);
+            mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
             if(mysqli_stmt_fetch($stmt)){
                 if(password_verify($password, $hashed_password)){
                     //this means the password is correct
