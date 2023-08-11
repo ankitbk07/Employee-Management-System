@@ -1,6 +1,10 @@
 <?php
 session_start();
-require_once 'dbcompany.php'
+require_once 'dbcompany.php';
+if(empty($_SESSION['username']))
+{
+    header('location:login.php');
+}
 ?>
 
 <html lang="en">
@@ -36,14 +40,16 @@ require_once 'dbcompany.php'
         mysqli_stmt_prepare($find_stmt,$find_sql);
         mysqli_stmt_bind_param($find_stmt,"ss",$company_name,$address);
         mysqli_stmt_execute($find_stmt);
+        mysqli_stmt_store_result($find_stmt);
+        // echo mysqli_stmt_num_rows($find_stmt);
 
-        //To create stmt
-        $create_sql = "INSERT INTO `company`(`company_name`, `address`) VALUES (?,?)";
-        $create_stmt = mysqli_stmt_init($com_conn);
-
-        if(!mysqli_stmt_affected_rows($find_stmt)>0)
+        if(!mysqli_stmt_num_rows($find_stmt)>0)
         {
             mysqli_stmt_close($find_stmt);
+            mysqli_next_result($com_conn);
+
+            $create_sql = "INSERT INTO `company`(`company_name`, `address`) VALUES (?,?)";
+            $create_stmt = mysqli_stmt_init($com_conn);
             if(!mysqli_stmt_prepare($create_stmt,$create_sql))
             {
                 echo "Could Not Add in DataBase ";
@@ -52,56 +58,23 @@ require_once 'dbcompany.php'
             {
                 mysqli_stmt_bind_param($create_stmt,'ss',$company_name,$address);
                 mysqli_stmt_execute($create_stmt);
-    
+
                 mysqli_stmt_close($create_stmt);
+                mysqli_next_result($com_conn);
             }
             header("LOCATION:index.php");
         }
         else
         {
+            mysqli_stmt_close($find_stmt);
+            mysqli_next_result($com_conn);
             echo $company_name. " already in the list";
             
         }
         
+        
     }
-
-
     ?>
-    <?php
-    $fetch_sql = "Select * FROM company;";
-    $fetch_stmt = mysqli_stmt_init($com_conn);
-    mysqli_stmt_prepare($fetch_stmt,$fetch_sql);
-    mysqli_stmt_execute($fetch_stmt);
-    mysqli_stmt_bind_result($fetch_stmt,$id,$companyName,$address1);
-    // $resultCheck =mysqli_stmt_affected_rows($fetch_stmt);
-    // echo $resultCheck;
-    // if($resultCheck>0): ?>
-    <table>
-        <tr>
-            <th>SN</th>
-            <th>Company Name</th>
-            <th>Address</th>
-        </tr>
-        <?php
-            while(mysqli_stmt_fetch($fetch_stmt)):
-        ?>
-        <tr>
-            <td><?php echo $id ;?> </td>
-            <td><?php echo $companyName ;?> </td>
-            <td><?php echo $address1 ;?> </td>
-        </tr>
-        <?php
-        endwhile;
-        ?>
-        <?php mysqli_stmt_close($fetch_stmt); ?>
-
-    </table>
-
-    
-
-
-
-
-
+    <?php include 'read.php'; ?>
 </body>
 </html>
