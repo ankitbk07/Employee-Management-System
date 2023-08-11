@@ -11,7 +11,7 @@
       if  (! preg_match('/^[A-Za-z]+\s[A-Za-z]+(\s[A-Za-z]+)?$/', trim($_POST["username"]))){
        $username_err = "Invalid name format";
      }
-      $sql = "SELECT id FROM users WHERE username = ?";
+      $sql = "SELECT id FROM u  sers WHERE username = ?";
       $stmt = mysqli_prepare($conn, $sql);
       if($stmt){
         mysqli_stmt_bind_param($stmt, "s",  $param_username);

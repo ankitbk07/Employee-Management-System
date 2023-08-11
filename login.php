@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     $_SESSION["id"] = $id;
                     $_SESSION["loggedin"] = true;
                     //redirect user to welcome page
-                    header("location:index.php");
+                    header("location:dashboard.php");
                 }
                 else{
                     $password_err = "Incorrect password";

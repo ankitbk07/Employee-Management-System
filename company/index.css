@@ -18,7 +18,11 @@ table {
     flex-direction: row;
     justify-content: space-between;
   }
-
+#btn-update, #btn-delete
+  {
+    text-decoration: none;
+    color: black;
+  }
   .link
   {
     text-decoration: none;
