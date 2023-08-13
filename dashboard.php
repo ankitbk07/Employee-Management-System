@@ -18,6 +18,7 @@ if(empty($_SESSION['username']))
     <h1>Welcome To Dash board</h1>
     <button><a class='link' href="company/index.php">CRUD Operation for Company</a></button>
     <button><a class ='link' href="employee/index.php">CRUD Operation for Employee</a></button>
+    <button><a class ='link' href="./signup.php">Add User</a></button>
 
 </body>
 </html>

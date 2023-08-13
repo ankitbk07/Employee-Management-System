@@ -9,7 +9,6 @@
     // if($resultCheck>0): ?>
     <table>
         <tr>
-            <th>SN</th>
             <th>Company Name</th>
             <th>Address</th>
             <th>Action</th>
@@ -18,7 +17,6 @@
             while(mysqli_stmt_fetch($fetch_stmt)):
         ?>
         <tr>
-            <td><?php echo $id ;?> </td>
             <td><?php echo $companyName ;?> </td>
             <td><?php echo $address1 ;?> </td>
             <td><button id = 'btn-update'><a class ='a-link' href="update.php?username=<?=$companyName?>&address=<?=$address1?>">Update</a></button>

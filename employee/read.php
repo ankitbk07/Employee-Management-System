@@ -13,7 +13,6 @@
     // if($resultCheck>0): ?>
     <table>
         <tr>
-            <th>SN</th>
             <th>Employee Name</th>
             <th>Salary</th>
             <th>Date of Birth</th>
@@ -24,7 +23,6 @@
             while(mysqli_stmt_fetch($fetch_stmt)):
         ?>
         <tr>
-            <td><?php echo $emp_id ;?> </td>
             <td><?php echo $emp_name ;?> </td>
             <td><?php echo $salary ;?> </td>
             <td><?php echo $dob ;?> </td> 
