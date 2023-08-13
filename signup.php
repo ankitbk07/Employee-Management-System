@@ -11,7 +11,7 @@
       if  (! preg_match('/^[A-Za-z]+\s[A-Za-z]+(\s[A-Za-z]+)?$/', trim($_POST["username"]))){
        $username_err = "Invalid name format";
      }
-      $sql = "SELECT id FROM u  sers WHERE username = ?";
+      $sql = "SELECT id FROM users WHERE username = ?";
       $stmt = mysqli_prepare($conn, $sql);
       if($stmt){
         mysqli_stmt_bind_param($stmt, "s",  $param_username);
@@ -101,13 +101,15 @@
 <body>
     <div class="container">
         <h1 class="header">Sign Up</h1>
-        <p class="sub">Please fill in this form to add an account.</p>
+        <p class="sub">Please fill in this form to create an account.</p>
         <p style="color : red;">
           <?php
            echo $username_err. "<br>". $email_err. "<br>" . $password_err;
            ?>
+          
         </p>
-        <form action="register.php" method="POST">
+        <hr>
+        <form action="signup.php" method="POST">
         <label for="name"><b>Name:</b></label>
         <input type="text" placeholder="Enter name" name="username" id = "username"  required>
         <br>

@@ -12,12 +12,12 @@ if(empty($_SESSION['username']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index1.css">
 </head>
 <body> 
     <div class="header">
             <div>
-                <h1> welcome <?php echo  $_SESSION['username']?>  </h1>
+                <h1> Welcome <?php echo  ucwords ($_SESSION['username'])?>  </h1>
             </div>
 
             <div>
@@ -28,7 +28,7 @@ if(empty($_SESSION['username']))
     <form action="" method="POST" >
         <input type="text" name ='company-name' placeholder="Company Name" >
         <input type="text" name ='address' placeholder="Address">
-        <button type="submit"> Add </button> 
+        <button type="submit" class='add'> Add </button> 
     </form>
     <?php 
     if($_SERVER['REQUEST_METHOD'] == "POST")

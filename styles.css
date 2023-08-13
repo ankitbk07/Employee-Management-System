@@ -1,0 +1,106 @@
+* {
+   box-sizing:border-box;
+   border-radius: 30px;
+   
+  }
+  body{
+    background-image: url("img/wallpaper.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment : fixed;
+  }
+  .container{
+  background: rgba(0, 0, 0, 0.6);
+  background-attachment: fixed;
+  text-align: center;
+  border: 3px solid #fff;
+    border-radius: 70px 0 70px 0;
+  width: 45%;
+  margin : 30px auto;
+  padding: 15px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    flex-direction: column;
+    flex-wrap: wrap;
+} 
+
+
+.header{
+    text-align: center;
+}
+.sub{
+   text-align: center;
+}
+
+  input[type=text], input[type=password] {
+  width: 400px;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display:flex;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+button {
+  background-color: #240588;
+  color: white;
+  padding: 15px 20px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  width: 120px;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+  background-color: #785ece;
+}
+
+
+.signupbtn {
+  padding: 14px 20px;
+  background-color: #240588;
+}
+
+
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+  
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display:table;
+  
+}
+
+@media only screen and (min-width : 100px) and (max-width: 800px){
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+  input[type=text], input[type=password] {
+    width: 250px;
+    padding: 10px;
+  }
+  .container{
+   width : 94%;
+   overflow : hidden;
+   box-sizing: border-box;
+  }
+}

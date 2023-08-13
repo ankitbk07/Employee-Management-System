@@ -12,7 +12,7 @@ if(empty($_SESSION['username']))
     if(isset($_GET['id']))
     {
         $id = $_GET['id'];
-        $delete_sql = "DELETE From company where company_id = ?";
+        $delete_sql = "DELETE From employee where emp_id = ?";
         $del_stmt = mysqli_stmt_init($com_conn);
         mysqli_stmt_prepare($del_stmt,$delete_sql);
         mysqli_stmt_bind_param($del_stmt,'i',$id);

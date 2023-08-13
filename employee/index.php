@@ -11,13 +11,13 @@ if(empty($_SESSION['username']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Create Operation</title>
+    <link rel="stylesheet" href="index1.css">
 </head>
 <body> 
     <div class="header">
             <div>
-                <h1> welcome <?php echo  $_SESSION['username']?>  </h1>
+                <h1> welcome <?php echo  ucwords($_SESSION['username'])?>  </h1>
             </div>
 
             <div>
@@ -29,10 +29,17 @@ if(empty($_SESSION['username']))
         <input type="text" name ='employee-name' placeholder="Employee Name" >
         <input type="text" name ='salary' placeholder="Salary">
         <input type="text" name ='dob' placeholder="YYYY-MM-DD">
-        <input type="text" name = 'company-id'placeholder = 'company-name'>
+        <input type="text" name = 'company-id'placeholder = 'company-id'>
         <button type="submit"> Add </button> 
     </form>
+
     <?php 
+
+    $employee_name = '';
+    $salary = 0;
+    $dob = '';
+    $company_id = 0;
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         $employee_name = mysqli_real_escape_string( $com_conn,$_POST['employee-name']);

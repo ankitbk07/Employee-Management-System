@@ -21,8 +21,8 @@
             <td><?php echo $id ;?> </td>
             <td><?php echo $companyName ;?> </td>
             <td><?php echo $address1 ;?> </td>
-            <td><button><a href="update.php?username=<?=$companyName?>&address=<?=$address1?>" id ="btn-update">Update</a></button>
-            <button><a href="delete.php?id=<?=$id?>" id ="btn-delete">Delete</a></button>
+            <td><button id = 'btn-update'><a class ='a-link' href="update.php?username=<?=$companyName?>&address=<?=$address1?>">Update</a></button>
+            <button id = 'btn-delete'><a class ='a-link'href="delete.php?id=<?=$id?>">Delete</a></button>
         </tr>
         <?php
         endwhile;

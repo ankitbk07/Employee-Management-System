@@ -50,21 +50,64 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
        
 ?>  
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="buttonstyle.css">
+
+    <title>Login page</title>
 </head>
 <body>
-    <div class="form">
-    <h1 class="header-form" >Log In</h1>    
-    <form action="" method="POST">
-            <input class="input-form" type="text" name ='username' placeholder='Usernmae'> 
-            <input class="input-form" type="password" name="password" placeholder="Password" />
-            <button type= 'submit' class='btn-form'>Log In</button>
-        </form> 
-    </div>
+    <div class="box">
+        <div class="container"> 
+            <div class="header">
+                <span>Have an account?</span>   
+                <header>Login</header>
+                <p style="color : red;">
+            <?php
+                    echo $username_err ."<br>". $password_err;
+            ?>
+            </p>
+            </div>
+            <form action="" method="post">
+            <div class="input-field">
+                <input type="text" class="input"  name="username" placeholder="Enter Username" required>
+            </div>
+            <br>
+            <div class="input-field">
+                <input type="password" class="input" id = "password" name = "password" placeholder="Enter Password"  required>
+            </div>
+            
+            <br>
+            <div class="button">
+                <div class="left">
+                    <input type="checkbox" id="check">
+                    <label for="check" onclick="togglePasswordVisibility()">Show Password</label>
+                </div>
+
+            <div class="input-field">
+                <button type="submit" class="submit">Login</button>
+            </div> 
+            <br>
+
+            </form>
+<br>
+                <div class="right">
+            
+                    <a href="register.php" style="color:green;"> Sign Up</a>
+                </div>
+</div>
+<script>
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+</script>
 </body>
 </html>
